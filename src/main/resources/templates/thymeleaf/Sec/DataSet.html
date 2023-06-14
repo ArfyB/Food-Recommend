@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<form id="UserData">
+<input type="hidden" name="UserEmail" th:value="${session.email}">
+
+비밀번호<input type="text" name="UserPwd" id="UserPwd1">
+비밀번호 확인<input type="text" id="UserPwd2">
+<span id="PwdCheckText"></span>
+
+<br>
+
+닉네임<input type="text" name="UserNick" id="UserNick">
+<span id="NickCheckText"></span>
+
+<br>
+
+@<input type="text" name="UserTag">
+<span id="TagCheckText"></span>
+
+<button type="button" id="join">가입</button>
+</form>
+
+<script src="/js/DataSet.js"></script>
+</body>
+</html>

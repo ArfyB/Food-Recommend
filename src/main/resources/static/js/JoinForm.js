@@ -2,13 +2,15 @@ $(function()
 {
 	$('#join').on('click', function(event)
 	{
-		var form = $('#UserEmail');
-		var UserData = new FormData(form);
+		var Form = $('#FUser');
+		var UserData = new FormData(Form[0]);
+		
+		var EmailCheck = $("#EmailCheck");
 		
 		$.ajax
 		({
 			type : 'post',
-			url : '/sec/email',
+			url : '/mail/send',
 			data : UserData,
 			processData : false,
 			contentType : false,

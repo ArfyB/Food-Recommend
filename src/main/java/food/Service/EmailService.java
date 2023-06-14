@@ -11,6 +11,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import food.Mapper.EmailMapper;
 import food.Vo.FUser;
 import jakarta.activation.DataHandler;
 import jakarta.activation.FileDataSource;
@@ -33,7 +34,10 @@ public class EmailService
    @Autowired
    private JavaMailSender sender;
    
-   public HttpServletRequest request; 
+   public HttpServletRequest request;
+   
+   @Autowired
+   private EmailMapper em;
    
    public boolean sendSimpleText()
    {
@@ -84,6 +88,8 @@ public class EmailService
       return false;
    }
    
+   
+   // Email을 보낸뒤 해당 인증코드를 저장하여 검증하기 위해 sesison을 추가.
    public boolean sendHTMLMessage(Map<String, Object> map, HttpSession session)
    {
       MimeMessage mimeMessage = sender.createMimeMessage();
@@ -102,7 +108,7 @@ public class EmailService
 
          mimeMessage.setSubject("마임 메시지(HTML) 테스트");
          
-         mimeMessage.setContent("<a href='http://localhost/sec/auth/"+ auth +"'>메일주소 인증1</a>", "text/html;charset=utf-8");
+         mimeMessage.setContent("<a href='http://localhost/mail/auth/"+ auth +"'>메일주소 인증1</a>", "text/html;charset=utf-8");
          
          sender.send(mimeMessage);
          return true;
@@ -156,5 +162,19 @@ public class EmailService
          log.error("에러={}", ex);
       }
       return false;
+   }
+   
+   
+   public boolean EmailCheck(String UserEmail)
+   {
+	   FUser Email = em.EmailCheck(UserEmail);
+	   if(Email == null)
+	   {
+		   return false;
+	   }
+	   else
+	   {
+		   return true;
+	   }
    }
 }

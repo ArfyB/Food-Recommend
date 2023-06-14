@@ -9,4 +9,22 @@
         SELECT UserEmail, UserNick, UserTag, UserRole FROM FUser WHERE UserEmail = #{UserEmail}
         
         </select>
+        
+        
+        <select id="TagCheck"
+        resultType="String">
+        SELECT UserTag From FUser WHERE UserTag = #{UserTag}
+        </select>
+        
+        <insert id="UserJoin"
+        parameterType="food.Vo.FUser">
+        INSERT INTO FUser (UserEmail, UserPwd, UserNick, UserTag)
+        values
+        (
+        #{UserEmail},
+        #{UserPwd},
+        #{UserNick},
+        #{UserTag}
+		)
+        </insert>
 </mapper>

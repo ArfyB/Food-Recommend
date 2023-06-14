@@ -8,4 +8,6 @@ import food.Vo.FUser;
 public interface FUserMapper 
 {
 	public FUser DoLogin(String UserEmail);
+	public String TagCheck(String UserTag); 
+	public int UserJoin(FUser User); 
 }
