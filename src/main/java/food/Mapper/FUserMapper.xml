@@ -6,7 +6,7 @@
         <select id='DoLogin'
         resultType='food.Vo.FUser'>
         
-        SELECT UserEmail, UserNick, UserTag, UserRole FROM FUser WHERE UserEmail = #{UserEmail}
+        SELECT UserEmail, UserPwd, UserNick, UserTag, UserRole FROM FUser WHERE UserEmail = #{UserEmail}
         
         </select>
         

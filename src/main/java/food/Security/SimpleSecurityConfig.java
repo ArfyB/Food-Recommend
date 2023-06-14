@@ -57,7 +57,7 @@ public class SimpleSecurityConfig
             //.ignoringAntMatchers("/doLogin")
 
             .formLogin().loginPage("/sec/login")   // 지정된 위치에 로그인 폼이 준비되어야 함
-               .loginProcessingUrl("/doLogin")            // 컨트롤러 메소드 불필요, 폼 action과 일치해야 함
+               .loginProcessingUrl("/DoLogin")            // 컨트롤러 메소드 불필요, 폼 action과 일치해야 함
                .failureUrl("/sec/login")      // 로그인 실패시 다시 로그인 폼으로
                //.failureForwardUrl("/login?error=Y")  //실패시 다른 곳으로 forward
                .defaultSuccessUrl("/sec/loginsuccess", true)
@@ -67,7 +67,7 @@ public class SimpleSecurityConfig
                
                .and()   // 디폴트 로그아웃 URL = /logout
                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 요청시 URL
-             .logoutSuccessUrl("/commision/home")
+             .logoutSuccessUrl("/food/mainpage")
              .invalidateHttpSession(true) 
              .deleteCookies("JSESSIONID")
              .deleteCookies("login")
